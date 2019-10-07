@@ -1,0 +1,21 @@
+{
+  "name": "express-latlong-intersection",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node lib/app",
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "GPL-2.0-only",
+  "devDependencies": {
+    "mocha": "^6.2.1",
+    "prettier": "~1.18.2",
+    "unexpected": "^11.8.0",
+    "unexpected-express": "^12.0.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
