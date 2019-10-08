@@ -60,7 +60,8 @@ describe("IntersectionCalculator", () => {
         "to exhaustively satisfy",
         {
           bearing: {
-            absolute: expect.it("to be close to", -134.995, 1e-3)
+            absolute: expect.it("to be close to", -134.995, 1e-3),
+            direction: "SW"
           },
           location: expectedEntry
         }
