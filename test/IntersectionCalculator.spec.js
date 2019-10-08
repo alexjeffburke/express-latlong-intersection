@@ -1,4 +1,5 @@
 const expect = require("unexpected");
+const turf = require("@turf/turf");
 
 const IntersectionCalculator = require("../lib/IntersectionCalculator");
 const LocationEntry = require("../lib/LocationEntry");
@@ -31,19 +32,16 @@ describe("IntersectionCalculator", () => {
       ]);
 
       const fromLocation = new LocationEntry({ long: 1, lat: 1 });
+      const fromPoint = turf.point(fromLocation.coordinates);
 
-      expect(
-        instance.determineNearestCrossingPoint(fromLocation),
-        "to satisfy",
-        {
-          properties: {
-            index: 0
-          },
-          geometry: {
-            coordinates: [expect.it("to be close to", 1, 1e-9), 0]
-          }
+      expect(instance.determineNearestCrossingPoint(fromPoint), "to satisfy", {
+        properties: {
+          index: 0
+        },
+        geometry: {
+          coordinates: [expect.it("to be close to", 1, 1e-9), 0]
         }
-      );
+      });
     });
   });
 
@@ -57,9 +55,16 @@ describe("IntersectionCalculator", () => {
 
       const fromLocation = new LocationEntry({ long: 1, lat: 1 });
 
-      expect(instance.findNearestLocation(fromLocation), "to equal", {
-        location: expectedEntry
-      });
+      expect(
+        instance.findNearestLocation(fromLocation),
+        "to exhaustively satisfy",
+        {
+          bearing: {
+            absolute: expect.it("to be close to", -134.995, 1e-3)
+          },
+          location: expectedEntry
+        }
+      );
     });
   });
 });
