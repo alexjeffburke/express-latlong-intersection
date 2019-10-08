@@ -20,7 +20,7 @@ describe("intersection", () => {
     intersector.findNearestLocation.returns({ bob: 1, alice: 0 });
 
     return expect(intersectionHandler({ intersector }), "to yield exchange", {
-      request: "/",
+      request: "/?long=0&lat=0",
       response: {
         statusCode: 200,
         headers: {
