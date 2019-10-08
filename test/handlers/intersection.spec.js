@@ -30,4 +30,13 @@ describe("intersection", () => {
       }
     });
   });
+
+  it("should error on invalid location", () => {
+    return expect(intersectionHandler({ intersector }), "to yield exchange", {
+      request: "/?long=0",
+      response: {
+        errorPassedToNext: new Error("invalid lat or long")
+      }
+    });
+  });
 });
