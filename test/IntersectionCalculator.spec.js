@@ -67,4 +67,70 @@ describe("IntersectionCalculator", () => {
       );
     });
   });
+
+  describe("bearingToDirection()", () => {
+    describe("when positive", () => {
+      it("should return a named bearing", () => {
+        expect(
+          IntersectionCalculator.bearingToDirection(135),
+          "to equal",
+          "SE"
+        );
+      });
+
+      it("should round down correctly", () => {
+        expect(
+          IntersectionCalculator.bearingToDirection(157.4),
+          "to equal",
+          "SE"
+        );
+      });
+
+      it("should round up correctly", () => {
+        expect(
+          IntersectionCalculator.bearingToDirection(157.5),
+          "to equal",
+          "S"
+        );
+      });
+
+      it("should handle near zero correctly", () => {
+        expect(IntersectionCalculator.bearingToDirection(0.1), "to equal", "N");
+      });
+    });
+
+    describe("when negative", () => {
+      it("should return a named bearing", () => {
+        expect(
+          IntersectionCalculator.bearingToDirection(-135),
+          "to equal",
+          "SW"
+        );
+      });
+
+      it("should round down correctly", () => {
+        expect(
+          IntersectionCalculator.bearingToDirection(-157.4),
+          "to equal",
+          "SW"
+        );
+      });
+
+      it("should round up correctly", () => {
+        expect(
+          IntersectionCalculator.bearingToDirection(-157.5),
+          "to equal",
+          "S"
+        );
+      });
+
+      it("should handle near zero correctly", () => {
+        expect(
+          IntersectionCalculator.bearingToDirection(-0.1),
+          "to equal",
+          "N"
+        );
+      });
+    });
+  });
 });
