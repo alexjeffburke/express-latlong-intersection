@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "coverage": "nyc --reporter lcov --reporter text npm test",
     "start": "node lib/app",
     "test": "mocha"
   },
@@ -11,6 +12,7 @@
   "license": "GPL-2.0-only",
   "devDependencies": {
     "mocha": "^6.2.1",
+    "nyc": "^14.1.1",
     "prettier": "~1.18.2",
     "sinon": "^7.5.0",
     "unexpected": "^11.8.0",
