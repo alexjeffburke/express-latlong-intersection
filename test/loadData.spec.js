@@ -6,7 +6,7 @@ const LocationEntry = require("../lib/LocationEntry");
 
 describe("loadData", () => {
   it("should return LocatinEntry objects", () => {
-    const dataFile = path.join(__dirname, "..", "data", "intersections.csv");
+    const dataFile = path.join(__dirname, "..", "testdata", "example.csv");
 
     expect(
       loadData(dataFile),
